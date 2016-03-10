@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- all other head tags must come after -->
+	<title>Instagram Collection</title>
+
+	<!-- SEO-->
+	<meta name="description" content="web app to view post on instragram using a hashtag and creation date">
+	<meta name="keywords" content="instagram, photo, collection, hashtag, webapp, front end, instagram api">
+	<meta name="author" content="Kristina Traeger">
+
+
+	<!-- Style sheets -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<!-- http://realfavicongenerator.net/ *individual favicon package must be created and extracted in "favicon"*-->
+	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Include the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+
+</head>
+<body>
+
+		<header>
+				<div id="logo">
+					<img src="img/instaheader_small.png" width="400">
+				</div>
+				<h1> #collection</h1>
+		</header>
+
+	<div ng-app="InstagramApp" ng-controller="MainController">
+
+		<div class="bar">
+			<input id="hashtag" value="kristinatestedinstaapi">
+			<!-- toggle between list and grid view -->
+			<a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+			<a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"></a>
+		</div>
+
+		<!-- grid layout showing iframes only -->
+		<ul ng-show="layout == 'grid'" class="grid">
+			<li ng-repeat="data in instadata.data.data">
+				<a href="{{data.link}}" target="_blank">
+					<iframe ng-src="{{data.link | convertUrl}}" allowfullscreen frameborder="0" width="320" height="400px" scrolling="no" allowtransparency="true">
+					</iframe>
+				</a>
+			</li>
+		</ul>
+
+		<!-- detailed list with caption and tag time -->
+		<ul ng-show="layout == 'list'" class="list">
+			<li ng-repeat="data in instadata.data.data">
+				<a href="{{data.link}}" target="_blank">
+					<iframe ng-src="{{data.link | convertUrl}}" allowfullscreen frameborder="0" width="320" height="400px" scrolling="no" allowtransparency="true">
+					</iframe>
+				<p>{{data.caption.text}}</p>
+				<p>tag time: {{data.created_time | convertUnix}}</p>
+				<p>comments: {{data.comments.count}}</p>
+				<p>{{data.comments.data}}</p>
+			</li>
+		</ul>
+
+	</div>
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+	<!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers-->
+    <script src="js/controllers/MainController.js"></script>
+    <script src="js/controllers/filter.js"></script>
+
+    <!-- Services -->
+    <script src="js/services/instagram.js"></script>
+
+</body>
+</html>
