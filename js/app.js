@@ -1,1 +1,1 @@
-var app = angular.module('InstagramApp', []);
+var app = angular.module('InstagramApp', ['firebase']);
