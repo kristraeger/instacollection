@@ -14,7 +14,6 @@ a, a:visited {
 	outline: none;
 	color: #3f729b;
     text-decoration: none;
-     -webkit-tap-highlight-color: rgba(63, 114, 155, 0.3);
 }
 
 a:hover {
@@ -61,6 +60,7 @@ section, footer, header, aside, nav{
 	color: white;
 	font-weight: 300;
 	border: 1px solid white;
+	transition: all 0.2s ease-out;
 }
 
 .bar a.active, .bar #search:hover {
@@ -79,8 +79,6 @@ section, footer, header, aside, nav{
 	background-image: url('../img/c.png');
 	background-size: 26px 26px;
 }
-
-
 
 .bar input{
     background: #fafafa;
@@ -113,35 +111,17 @@ section, footer, header, aside, nav{
 
 }
 
-.next {
-	background-color: #f6f7f7;
-	color: #a6aaae;
-	border: none;
-
-}
-
-.next:focus {
-	outline: none;
-}
-
-.next:hover {
-	color: #4987a1;
-	background-color: #ededef;
-	transition: all 0.2s ease-out;
-}
-
 /*list layout*/
 
 ul.list{
 	list-style: none;
-	width: 804px;
+	/*width: 804px; change: list view width same as collection view to be more consistent*/
 	margin: 0 auto;
 	text-align: left;
 }
 
-ul.list li{
+ul.list li, .collection-search {
 	border-bottom: 1px solid #ddd;
-	padding: 10px;
 	overflow: hidden;
 }
 
@@ -155,23 +135,25 @@ ul.list li iframe{
 ul.list li p{
 	margin-left: 330px;
 	margin-top: 45px;
-	font-weight: bold;
-	color: #818488;
+	font-weight: 300;
 	word-wrap: break-word;
-}
-
-.btn-list {
-	width: 804px;
+}.btn-list {
+	width: 972px;
 	height: 70px;
 	float: left;
 	border-top: 20px solid white;
 }
 
-/* grid layout*/
+.search-header {
+	font-weight: 300;
+	border-top: 20px solid white;
+}
 
-ul.grid, ul.collection {
+/* collection layout (grid DEPRECIATED)*/
+
+ul.grid, ul.collection, ul.list {
 	list-style: none;
-	width: 972px; /* one iframe column is 324px total*/	
+	width: 972px; /* 3 col, one iframe is 324px total*/	
 	margin: 0 auto;
 	text-align: left;
 }
@@ -188,10 +170,46 @@ ul.grid li iframe, ul.collection li iframe {
 	border: none;
 }
 
+.info-coll {
+	display: inline-block;
+}
+
+.info-header {
+	font-weight: 300;
+	border-top: 20px solid white;
+	border-bottom: 10px solid white;
+	width: 972px; /* one iframe column is 324px total*/	
+}
+
+/* buttons */
+
 .btn-grid, .btn-collection {
 	width: 306px;
 	height: 354px;
 	display: block;
 	border-top: 50px solid white;
+}
+
+.next, .btn-delete, .btn-add {
+	background-color: #f6f7f7;
+	color: #a6aaae;
+	border: none;
+}
+
+.next:focus, #search:focus, .btn-delete:focus, .btn-add:focus {
+	outline: none;
+}
+
+.next:hover, .btn-delete:hover, .btn-add:hover {
+	color: #4987a1;
+	background-color: #ededef;
+	transition: all 0.2s ease-out;
+}
+
+.btn-list {
+	width: 972px;
+	height: 70px;
+	float: left;
+	border-top: 20px solid white;
 }
 
