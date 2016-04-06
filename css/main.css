@@ -138,13 +138,15 @@ ul.list li p{
 	margin-top: 45px;
 	font-weight: 300;
 	word-wrap: break-word;
-}.btn-list {
-	width: 972px;
-	height: 70px;
-	float: left;
-	border-top: 20px solid white;
 }
 
+.text-block {
+	padding: 38px;
+}
+
+.data-block {
+	padding: 0 30px;
+}
 .search-header {
 	font-weight: 300;
 	border-top: 20px solid white;
@@ -152,9 +154,13 @@ ul.list li p{
 
 /* collection layout (grid DEPRECIATED)*/
 
+.Embed {
+	padding: 0;
+}
+
 ul.grid, ul.collection, ul.list {
 	list-style: none;
-	width: 972px; /* 3 col, one iframe is 324px total*/	
+	width: 912px; /* 3 col, one iframe is 304px total*/	
 	margin: 0 auto;
 	text-align: left;
 }
@@ -165,21 +171,21 @@ ul.grid li, ul.collection li {
 }
 
 ul.grid li iframe, ul.collection li iframe {
-	width: 320px;
-	height: 400px;
+	width: 200px;
+	height: 220px;
 	display: block;
 	border: none;
 }
 
 .info-coll {
 	display: inline-block;
+	padding-left: 8px;
 }
 
 .info-header {
 	font-weight: 300;
 	border-top: 20px solid white;
 	border-bottom: 10px solid white;
-	width: 972px; /* one iframe column is 324px total*/	
 }
 
 /* welcome view */
@@ -202,6 +208,7 @@ ul.grid li iframe, ul.collection li iframe {
 	background-color: #f6f7f7;
 	color: #a6aaae;
 	border: none;
+	margin-left: 8px;
 }
 
 .next:focus, #search:focus, .btn-delete:focus, .btn-add:focus {
@@ -215,9 +222,164 @@ ul.grid li iframe, ul.collection li iframe {
 }
 
 .btn-list {
-	width: 972px;
+	width: 912px;
 	height: 70px;
 	float: left;
 	border-top: 20px solid white;
+}
+
+.form-fields, #searchBtn, #toggleField {
+	display: inline-block;
+}
+
+/* media queries */
+
+/*tablet*/ 
+
+@media screen and (max-width: 769px) {
+	.bar, .text-block, .data-block, ul.list, ul.collection {
+		width: 700px;
+	}
+
+	.bar input, .bar label {
+		right: 0px;
+	}
+
+	.bar #search {
+		left: 3px;
+	}
+
+	.text-block {
+		padding-bottom: 10px;
+	}
+
+	.btn-list {
+		width: 640px;
+		margin-left: 0px;
+	}
+
+}
+
+/* mobile L 425px - iPhone 6S 414*/
+
+@media screen and (max-width: 426px) {
+	.bar, .text-block, .data-block, ul.list, ul.collection {
+		width: 400px;
+	}
+
+	.btn-list {
+		width: 340px;
+		margin-left: 0;
+	}
+
+	.bar input {
+		width: 100px;
+	}
+
+	.bar input, .bar label {
+		right: 0px;
+	}
+
+	#hashtagField, #dateField, #searchBtn, #toggleField {
+		display: block;
+		text-align: center;
+		padding-top: 11px;
+	}
+
+	#hashtag, .bar #search  {
+		width: 250px;
+	}
+
+	#toDate, #fromDate {
+		width: 115px;
+	}
+
+	#dateField {
+		margin-right: 20px;
+	}
+
+	#searchBtn, #toggleField {
+		padding-left: 10px;
+	}
+
+	.bar #search {
+		left: 0;
+		margin-right: 0;
+	}
+
+	.bar a {
+		top: 0;
+	}
+
+	ul.list li p {
+		margin-left: 8px;
+	}
+
+	ul.grid li iframe, ul.collection li iframe {
+		width: 150px;
+		height: 170px;
+	}
+}
+
+/*iPhone 6 and smaller*/
+@media screen and (max-width: 376px ) {
+	header img {
+		width: 250px;
+		margin-top: 15px;
+	}
+
+	.bar {
+		margin: 30px auto 10px;
+	}
+	.bar, .text-block, .data-block, ul.list, ul.collection {
+		width: 300px;
+	}
+
+	#toDate, #fromDate {
+		width: 105px;
+	}
+
+	#dateField {
+		margin-right: 18px;
+
+	}
+
+	#hashtag, .bar #search  {
+		width: 230px;
+	}
+
+	.btn-list {
+		width: 240px;
+	}
+
+	ul.grid li iframe, ul.collection li iframe {
+		width: 220px;
+		height: 240px;
+	}
+
+	.text-block, .data-block {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.info-header {
+		border-top: 10px solid white;
+	}
+
+}
+
+/*iPhone 5 and smaller*/
+@media screen and (max-width: 321px) {
+	.bar {
+		margin: 30px auto 5px;
+	}
+
+	.text-block, .data-block {
+		font-size: 12px;
+	}
+
+	.btn-list {
+		width: 240px;
+	}
 }
 

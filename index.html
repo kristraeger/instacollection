@@ -40,28 +40,38 @@
 
 		<div ng-app="InstagramApp" ng-controller="MainController" ng-cloak>
 			<div class="bar">
-				<label for="hashtag">#</label>
-				<input id="hashtag" name="hashtagInput" value="kristinatestedinstaapi" placeholder="search for hashtag">
+
+				<div id="hashtagField" class="form-fields">
+					<label for="hashtag">#</label>
+					<input id="hashtag" name="hashtagInput" value="kristinatestedinstaapi" placeholder="search for hashtag">
+				</div>
 
 				<!-- input fields for start and end date (default is year 2016)-->
-				<label for="fromDate">from</label>
-				<input type="text" id="fromDate" name="fromDate" ng-model="fromDate" ng-model-options="{
-                       updateOn: 'click'
-                   }" placeholder="YYYY-MM-DD">
-				<label for="toDate">to</label>
-				<input type="text" id="toDate" name="toDate" ng-model="toDate" ng-model-options="{
-                       updateOn: 'click'
-                   }" placeholder="YYYY-MM-DD">
-				<button id="search" ng-model="searchView">GO</button>
+				<div id="dateField" class="form-fields">
+					<label for="fromDate">from</label>
+					<input type="text" id="fromDate" name="fromDate" ng-model="fromDate" ng-model-options="{
+	                       updateOn: 'click'
+	                   }" placeholder="YYYY-MM-DD">
+					<label for="toDate">to</label>
+					<input type="text" id="toDate" name="toDate" ng-model="toDate" ng-model-options="{
+	                       updateOn: 'click'
+	                   }" placeholder="YYYY-MM-DD">
+	            </div>
+
+	            <div id="searchBtn">
+					<button id="search" ng-model="searchView">GO</button>
+				</div>
 
 				<!-- toggle between list and collection-->
-				<a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
-				<a class="collection-icon" ng-class="{active: layout == 'collection'}" ng-click="layout = 'collection'">
-				</a>
+				<div id="toggleField">
+					<a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+					<a class="collection-icon" ng-class="{active: layout == 'collection'}" ng-click="layout = 'collection'">
+					</a>
+				</div>
 
 			</div>
 
-			<div id="welcome" class="welcome" ng-hide="searchView || layout == 'collection' || layout == 'list'">
+			<div id="welcome" class="welcome text-block" ng-hide="searchView || layout == 'collection' || layout == 'list'">
 				<h4 ng-hide="searchView">create your own instagram #collection</h4>
 				<p class="search-header" ng-hide="searchView">search for hashtags within a certain timeframe and add all the photos you love to your own instragram #collection!</p>
 				<p class="search-header" ng-hide="searchView">Press enter / hit GO to get started.</p>
@@ -69,9 +79,11 @@
 
 			<!-- collection view from firebase-->
 			<ul ng-show="layout == 'collection'" class="collection">
-				<h4>your #collected search items</h4>
-				<p class="search-header" ng-hide="dataAdded">no items added to your #collection yet! start searching photos on instagram and type in a hashtag in the input field above.</p>
-				<div ng-repeat="data in fbdata" class="collection-search">
+				<div class="text-block">
+					<h4>your #collected search items</h4>
+					<p class="search-header" ng-hide="dataAdded">no items added to your #collection yet! start searching photos on instagram and type in a hashtag in the input field above.</p>
+				</div>
+				<div ng-repeat="data in fbdata" class="collection-search data-block">
 					<div class="info-header">
 						<div ng-repeat="info in data" > 
 						<!-- bug: info == null when loaded w/o window load -->
@@ -105,19 +117,23 @@
 
 			<!-- list view with caption and tag time -->
 			<ul ng-show="layout == 'list'" class="list">
-				<h4>your current search items</h4>
-				<p class="search-header" ng-show="searchView">if you like what you see, add all items to your #collection!</p>
-				<p class="search-header" ng-hide="searchView">no items to display! start searching photos on instagram and type in a hashtag in the input field above. if you like what you see, add photos to your personal #collection!</p>
-				<button id="add" ng-click="addData()" class="btn-add search-header" ng-show="searchView">add search</button>		
-				<li ng-repeat="data in results">
-					<a href="{{data.link}}" target="_blank">
-						<iframe ng-src="{{data.link | convertUrl}}" frameborder="0" width="320" height="400px" scrolling="no" allowtransparency="true">
-						</iframe>
-					</a>
-					<p>{{data.caption.text}}</p>
-					<p>tag time: {{data.created_time | convertUnix}}</p>
-				</li>
-				<button class="next btn-list" ng-show="searchView" ng-click="nextPage()">...more</button>
+				<div class="text-block">
+					<h4>your current search items</h4>
+					<p class="search-header" ng-show="searchView">if you like what you see, add all items to your #collection!</p>
+					<p class="search-header" ng-hide="searchView">no items to display! start searching photos on instagram and type in a hashtag in the input field above. if you like what you see, add photos to your personal #collection!</p>
+				</div>
+				<div class="data-block">
+					<button id="add" ng-click="addData()" class="btn-add search-header" ng-show="searchView">add search</button>		
+					<li ng-repeat="data in results">
+						<a href="{{data.link}}" target="_blank">
+							<iframe ng-src="{{data.link | convertUrl}}" frameborder="0" width="320" height="400px" scrolling="no" allowtransparency="true">
+							</iframe>
+						</a>
+						<p>{{data.caption.text}}</p>
+						<p>tag time: {{data.created_time | convertUnix}}</p>
+					</li>
+					<button class="next btn-list" ng-show="searchView" ng-click="nextPage()">...more</button>
+				</div>
 			</ul>
 
 		</div>
