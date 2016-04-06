@@ -61,7 +61,7 @@
 
 			</div>
 
-			<div id="welcome" ng-hide="searchView || layout == 'collection' || layout == 'list'">
+			<div id="welcome" class="welcome" ng-hide="searchView || layout == 'collection' || layout == 'list'">
 				<h4 ng-hide="searchView">create your own instagram #collection</h4>
 				<p class="search-header" ng-hide="searchView">search for hashtags within a certain timeframe and add all the photos you love to your own instragram #collection!</p>
 				<p class="search-header" ng-hide="searchView">Press enter / hit GO to get started.</p>
@@ -70,7 +70,7 @@
 			<!-- collection view from firebase-->
 			<ul ng-show="layout == 'collection'" class="collection">
 				<h4>your #collected search items</h4>
-				<p class="search-header" ng-hide="searchView">no items added to your #collection yet! start searching photos on instagram and type in a hashtag in the input field above.</p>
+				<p class="search-header" ng-hide="dataAdded">no items added to your #collection yet! start searching photos on instagram and type in a hashtag in the input field above.</p>
 				<div ng-repeat="data in fbdata" class="collection-search">
 					<div class="info-header">
 						<div ng-repeat="info in data" > 
@@ -109,7 +109,7 @@
 				<p class="search-header" ng-show="searchView">if you like what you see, add all items to your #collection!</p>
 				<p class="search-header" ng-hide="searchView">no items to display! start searching photos on instagram and type in a hashtag in the input field above. if you like what you see, add photos to your personal #collection!</p>
 				<button id="add" ng-click="addData()" class="btn-add search-header" ng-show="searchView">add search</button>		
-				<li ng-repeat="data in instadata.data.data | dateFilter:fromDate:toDate">
+				<li ng-repeat="data in results">
 					<a href="{{data.link}}" target="_blank">
 						<iframe ng-src="{{data.link | convertUrl}}" frameborder="0" width="320" height="400px" scrolling="no" allowtransparency="true">
 						</iframe>

@@ -23,8 +23,10 @@ function unixDate(input) {
     if (input != undefined) {
         // split input into temp arr (year, month, day)
         var temp = input.split('-')
-        // convert YYY-MM-DD format to valid Date Object
-        var dateObj =  new Date(temp[0], temp[1]-1, temp[2])
+        console.log(temp)
+        // convert YYY-MM-DD format to valid Date Object (add 1 day to inlude today results)
+        var dateObj =  new Date(temp[0], temp[1]-1, temp[2], 23, 59)
+        console.log(dateObj)
         // convert Date Object to unix timestamp
         return Math.round(dateObj.getTime()/1000).toString()
     }

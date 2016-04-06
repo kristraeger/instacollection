@@ -123,6 +123,7 @@ ul.list{
 ul.list li, .collection-search {
 	border-bottom: 1px solid #ddd;
 	overflow: hidden;
+	padding: 20px 0;
 }
 
 ul.list li iframe{
@@ -181,6 +182,13 @@ ul.grid li iframe, ul.collection li iframe {
 	width: 972px; /* one iframe column is 324px total*/	
 }
 
+/* welcome view */
+
+.welcome {
+	text-align: left;
+	width: 972px;
+	margin: 0 auto;
+}
 /* buttons */
 
 .btn-grid, .btn-collection {

@@ -24,21 +24,3 @@ app.filter('convertUrl', ['$sce', function($sce) {
 	}
 }])
 
-// custom filter for date range
-app.filter('dateFilter', function() {
-	return function(data, from, to) {
-	  	var dateFrom = unixDate(from)
-	    var dateTo = unixDate(to)
-	    var result = []  
-		if(data != undefined) {
-			for (var i=0; i<data.length; i++) {
-				var createdTime = data[i].created_time     
-				if (createdTime > dateFrom && createdTime < dateTo) {
-				    result.push(data[i])
-				    }
-				}
-		}
-		return result    
-  	}
-})
-
