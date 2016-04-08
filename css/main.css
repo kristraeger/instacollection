@@ -141,7 +141,7 @@ ul.list li p{
 }
 
 .text-block {
-	padding: 38px;
+	padding: 15px 38px;
 }
 
 .data-block {
@@ -357,6 +357,10 @@ ul.grid li iframe, ul.collection li iframe {
 		height: 240px;
 	}
 
+	ul.list li iframe {
+		width: 330px;
+	}
+
 	.text-block, .data-block {
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -381,5 +385,7 @@ ul.grid li iframe, ul.collection li iframe {
 	.btn-list {
 		width: 240px;
 	}
+
+
 }
 
